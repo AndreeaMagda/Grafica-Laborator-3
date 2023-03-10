@@ -9,14 +9,15 @@
 #include "glut.h"
 #include "math.h"
 
-static GLfloat x = 0, y = 0, z=0, alfa=0;
+static GLfloat x = 0, y = 0, z = 0, alfa = 0,a=0,b=0;
 static float pi = 3.14159;
-int nr_pc = 13600;
-static GLfloat interval = (2*pi)/nr_pc;
+int nr_pc = 100;
+static GLfloat interval = (2 * pi) / nr_pc;
 int raza = 80;
 void myInit() {
-    glClearColor(1.0, 1.0, 1.0, 1.0);//cod culoare rgb +transparenta
-}//vreau sa curete ecranul cu alb
+    glClearColor(1.0, 1.0, 1.0, 1.0);
+}
+
 
 void CALLBACK MutaStanga()
 {
@@ -56,31 +57,25 @@ void CALLBACK display()
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
     glTranslatef(x, y, z);
-    glRotatef(alfa, 0, 0, 1);
+    glRotatef(0, 0, 0, 1);
 
 
-   /* glBegin(GL_QUADS);
-    {
-        glColor3f(1.0, 0.0, 0.0);//setes rosu
-        glVertex2f(0, 0);
-        glColor3f(1.0, 1.0, 0.0);//setes galben
-        glVertex2f(150.0, 100.0);
-        glColor3f(0.0, 0.0, 1.0);//setes blue
-        glVertex2f(150.0, 150.0);
-        glColor3f(0.0, 1.0, 0.0);//setez verde
-        glVertex2f(100.0, 150.0);
-    }*/
+  
 
     glBegin(GL_POLYGON);
     {
-        glColor3f(1.0, 0.0, 0.0); 
-       
-        for (int i = 0; i < 13600; i++) {
-            x = cos(i * interval) * raza;
-            y = sin(i * interval) * raza;
-            glVertex2f(x, y);
+
+ 
+
+        for (int i = 0; i < nr_pc; i++) {
+
+            a = cos(i * interval) * raza;
+            b = sin(i * interval) * raza;
+            glColor3f(1.0, 0.0, 1.0);
+            glVertex2d(a, b);
+            
         }
-       
+
 
     }
     glEnd();
@@ -122,7 +117,7 @@ int main(int argc, char** argv)
 {
     auxInitDisplayMode(AUX_SINGLE | AUX_RGB);
     auxInitPosition(0, 0, 800, 600);
-    auxInitWindow("Un patrat");
+    auxInitWindow("Un cerc");
     myInit();
     auxKeyFunc(AUX_LEFT, MutaStanga);
     auxKeyFunc(AUX_RIGHT, MutaDreapta);
