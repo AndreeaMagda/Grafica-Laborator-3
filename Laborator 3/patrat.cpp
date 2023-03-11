@@ -62,7 +62,7 @@ void CALLBACK display()
 
   
 
-    glBegin(GL_QUAD_STRIP);
+    glBegin(GL_TRIANGLE_FAN);
     {
 
 
@@ -73,12 +73,11 @@ void CALLBACK display()
             a = cos(i * interval) * raza; 
             c = sin(i * interval) * raza;
             b = 5;
-            glColor3f(1.0, 0.0, 1.0);
+            glColor3f(0.0, 1.0, 1.0);
             glVertex3d(a, b, c);
             b = 100;
-            glColor3f(0.0, 1.0, 1.0);
-            glVertex3d(a, b, c ); 
-           
+            glColor3f(0.4, 0.0, 1.0);
+            glVertex2f(0, b);
             
         }
 
@@ -122,7 +121,7 @@ int main(int argc, char** argv)
 {
     auxInitDisplayMode(AUX_SINGLE | AUX_RGB);
     auxInitPosition(0, 0, 800, 600);
-    auxInitWindow("Un cilindru");
+    auxInitWindow("Un con");
     myInit();
     auxKeyFunc(AUX_LEFT, MutaStanga);
     auxKeyFunc(AUX_RIGHT, MutaDreapta);
