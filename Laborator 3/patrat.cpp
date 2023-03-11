@@ -11,7 +11,7 @@
 
 static GLfloat x = 0, y = 0, z = 0, alfa = 0,a=0,b=0,c=0;
 static float pi = 3.14159;
-int nr_pc = 100;
+int nr_pc = 4;
 static GLfloat interval = (2 * pi) / nr_pc;
 int raza = 50;
 void myInit() {
@@ -62,7 +62,7 @@ void CALLBACK display()
 
   
 
-    glBegin(GL_TRIANGLE_FAN);
+    glBegin(GL_QUAD_STRIP);
     {
 
 
@@ -72,12 +72,12 @@ void CALLBACK display()
 
             a = cos(i * interval) * raza; 
             c = sin(i * interval) * raza;
-            b = 5;
-            glColor3f(0.0, 1.0, 1.0);
+            b = 4;
+            glColor3f(0.6, 0.0, 1.0);
             glVertex3d(a, b, c);
             b = 100;
-            glColor3f(0.4, 0.0, 1.0);
-            glVertex2f(0, b);
+            glColor3f(0.0, 1.0, 1.0);
+            glVertex3d(a, b, c);
             
         }
 
@@ -121,7 +121,7 @@ int main(int argc, char** argv)
 {
     auxInitDisplayMode(AUX_SINGLE | AUX_RGB);
     auxInitPosition(0, 0, 800, 600);
-    auxInitWindow("Un con");
+    auxInitWindow("Un paralelipiped");
     myInit();
     auxKeyFunc(AUX_LEFT, MutaStanga);
     auxKeyFunc(AUX_RIGHT, MutaDreapta);
